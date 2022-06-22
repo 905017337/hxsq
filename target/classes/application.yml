@@ -1,0 +1,15 @@
+server:
+  port: 8091
+  servlet:
+    context-path: /jm-hxsq
+
+spring:
+  application:
+    name: jm-hxsq
+  datasource:
+    # 数据源
+    url: jdbc:mysql://101.200.204.47:3306/jm-hxsq?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: czhroot
+    # 静态路由
+    driver-class-name: com.mysql.cj.jdbc.Driver
