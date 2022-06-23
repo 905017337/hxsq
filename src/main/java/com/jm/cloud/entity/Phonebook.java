@@ -17,7 +17,7 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("phoneBook")
+@TableName("phone_book")
 public class Phonebook implements Serializable {
 
     private static final long serialVersionUID = 1L;

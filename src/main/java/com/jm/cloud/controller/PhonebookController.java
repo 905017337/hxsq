@@ -6,6 +6,7 @@ import com.github.pagehelper.util.StringUtil;
 import com.jm.cloud.entity.Phonebook;
 import com.jm.cloud.service.IPhonebookService;
 import com.jm.cloud.utils.result.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * @author caozhenhao
  * @since 2022-06-21
  */
-
+@Slf4j
 @RestController
 @RequestMapping("/phonebook")
 public class PhonebookController {
@@ -38,7 +39,7 @@ public class PhonebookController {
                     .likeRight(Phonebook::getName,name)
                     .likeLeft(Phonebook::getName,name);
         }
-        ;
+        log.info("111");
         return Result.success(iphonebookService.list(wrapper));
     }
 

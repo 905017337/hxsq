@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    # 数据源
+    url: jdbc:mysql://101.200.204.47:3306/jm-hxsq?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: czhroot
+    # 静态路由
+    driver-class-name: com.mysql.cj.jdbc.Driver
+logging:
+  config: classpath:log4j2.xml
+  level:
+    root: info
