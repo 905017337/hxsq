@@ -1,3 +1,11 @@
 ### 拦截器
 GET http://localhost:8091/jm-hxsq/phonebook/list
 Content-Type: application/json
+
+### 登录
+POST http://127.0.0.1:8091/jm-hxsq/wx-user/token
+Content-Type: application/json
+
+{
+  "code": "011qt1ml2hF3o94Zesol2ib7ff1qt1mg"
+}

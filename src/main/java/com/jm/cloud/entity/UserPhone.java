@@ -3,6 +3,7 @@ package com.jm.cloud.entity;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 
 /**
  * <p>
@@ -18,6 +19,7 @@ public class UserPhone implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private Integer id;
     /**
      * 手机号(不带区号)
      */

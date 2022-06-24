@@ -1,9 +1,12 @@
 package com.jm.cloud.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.jm.cloud.entity.Request.WxLogin;
+import com.jm.cloud.service.IWxUserService;
+import com.jm.cloud.utils.result.Result;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -13,8 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @author caozhenhao
  * @since 2022-06-23
  */
+@Slf4j
 @RestController
 @RequestMapping("/wx-user")
 public class WxUserController {
 
+    @Autowired
+    private IWxUserService userService;
+
+    @PostMapping("/token")
+    public Result token(@RequestBody WxLogin wxLogin){
+       return  userService.token(wxLogin.getCode());
+    }
 }

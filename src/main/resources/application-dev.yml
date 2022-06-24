@@ -6,6 +6,15 @@ spring:
     password: czhroot
     # 静态路由
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    database: 0
+    host: 101.200.204.47
+    port: 6379
+#        password: czhroot
+    # 连接超时时间
+    timeout: 10000
+    password: czhroot
+
 logging:
   config: classpath:log4j2.xml
   level:

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/phonebook")
+@RequestMapping("/phone-book")
 public class PhonebookController {
 
     @Autowired
@@ -34,12 +34,12 @@ public class PhonebookController {
     @GetMapping("/list")
     public Result list(String name){
         QueryWrapper<Phonebook> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(Phonebook::getStatus,1);
         if(!StringUtil.isEmpty(name)){
             wrapper.lambda()
                     .likeRight(Phonebook::getName,name)
                     .likeLeft(Phonebook::getName,name);
         }
-        log.info("111");
         return Result.success(iphonebookService.list(wrapper));
     }
 
@@ -73,7 +73,7 @@ public class PhonebookController {
      * @return
      */
     @PostMapping("/updateStats")
-    public Result updateStats(String id){
+    public Result updateStats(Integer id){
         Phonebook phonebook = new Phonebook();
         phonebook.setId(id);
         phonebook.setStatus(1);

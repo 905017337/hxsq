@@ -113,7 +113,7 @@ public class CodeGenerator {
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns("id");
         //数据库-表名
-        strategy.setInclude("wx_user");
+        strategy.setInclude("phone_type");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);

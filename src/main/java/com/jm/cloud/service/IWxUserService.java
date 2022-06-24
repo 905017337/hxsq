@@ -2,6 +2,7 @@ package com.jm.cloud.service;
 
 import com.jm.cloud.entity.WxUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jm.cloud.utils.result.Result;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IWxUserService extends IService<WxUser> {
 
+    Result token(String code);
 }

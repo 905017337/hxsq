@@ -18,6 +18,7 @@ public class DictionaryType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private Integer id;
     /**
      * 编码
      */
