@@ -1,13 +1,12 @@
 package com.jm.cloud.entity;
 
-import java.io.Serializable;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import org.springframework.data.annotation.Id;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -23,6 +22,8 @@ public class WxUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(value="id",type= IdType.AUTO)
+    private Integer id;
 
     private String appid;
 
@@ -34,11 +35,11 @@ public class WxUser implements Serializable {
 
     private String accessToken;
 
-    private Long userId;
+    private Integer userId;
 
-    private Long createdAt;
+    private Date createdTime;
 
-    private Long updatedAt;
+    private Date updatedTime;
 
 
 }

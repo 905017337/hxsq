@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class WxLoginResponse {
-    private String code;
     private String token;
+    private String avaurl;
+    private String nickName;
 }

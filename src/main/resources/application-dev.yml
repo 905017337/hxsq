@@ -16,6 +16,6 @@ spring:
     password: czhroot
 
 logging:
-  config: classpath:log4j2.xml
+#  config: classpath:log4j2.xml
   level:
     root: info

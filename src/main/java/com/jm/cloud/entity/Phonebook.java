@@ -1,9 +1,10 @@
 package com.jm.cloud.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class Phonebook implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(value="id",type= IdType.AUTO)
     private Integer id;
 
     private String name;
@@ -38,6 +40,8 @@ public class Phonebook implements Serializable {
     private Date updateTime;
 
     private Integer status;
+
+    private String remark;
 
 
 }

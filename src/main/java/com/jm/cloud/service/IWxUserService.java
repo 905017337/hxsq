@@ -1,8 +1,11 @@
 package com.jm.cloud.service;
 
+import com.jm.cloud.entity.Request.WxAuthorization;
 import com.jm.cloud.entity.WxUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jm.cloud.utils.result.Result;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -15,4 +18,8 @@ import com.jm.cloud.utils.result.Result;
 public interface IWxUserService extends IService<WxUser> {
 
     Result token(String code);
+
+    Object authorization(WxAuthorization wxAuthorization);
+
+    Object info(HttpServletRequest request);
 }

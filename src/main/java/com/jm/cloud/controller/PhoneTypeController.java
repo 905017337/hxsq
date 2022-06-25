@@ -5,22 +5,17 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.util.StringUtil;
 import com.jm.cloud.entity.PhoneType;
 import com.jm.cloud.entity.Phonebook;
-import com.jm.cloud.entity.Request.PhoneTypeRequest;
 import com.jm.cloud.entity.Response.PhoneTypeResponse;
-import com.jm.cloud.mapper.PhoneTypeMapper;
 import com.jm.cloud.service.IPhoneTypeService;
 import com.jm.cloud.service.IPhonebookService;
 import com.jm.cloud.utils.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -50,8 +45,11 @@ public class PhoneTypeController {
     }
 
     @GetMapping("/phoneBootlist")
-    public Result phoneBootlist(){
+    public Result phoneBootlist(@RequestParam(value = "name",required = false) String name){
         QueryWrapper<PhoneType> queryWrapper = new QueryWrapper<>();
+        if(StringUtil.isNotEmpty(name)){
+            queryWrapper.lambda().eq(PhoneType::getName,name);
+        }
         List<PhoneType> phoneTypes = phoneTypeService.list(queryWrapper);
         ArrayList<PhoneTypeResponse> responses = new ArrayList<>();
         phoneTypes.stream().forEach(item->{
@@ -80,5 +78,24 @@ public class PhoneTypeController {
     @PostMapping("/delete")
     public Result delete(@RequestParam(value = "id") int id){
         return Result.success(phoneTypeService.removeById(id));
+    }
+
+    /**
+     * 首页搜索
+     * @param name
+     * @return
+     */
+    @GetMapping("/search")
+    public Result search(String name){
+        QueryWrapper<Phonebook> wrapper = new QueryWrapper<>();
+        wrapper.lambda().like(Phonebook::getName,name);
+        List<Phonebook> list = iphonebookService.list(wrapper);
+        ArrayList<PhoneTypeResponse> result =  new ArrayList<>();
+        PhoneTypeResponse phoneTypeResponse = new PhoneTypeResponse();
+        phoneTypeResponse.setName("搜索结果");
+        phoneTypeResponse.setPhonebookList(list);
+        phoneTypeResponse.setId(1);
+        result.add(phoneTypeResponse);
+        return Result.success(result);
     }
 }
